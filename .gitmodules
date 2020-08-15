@@ -4,3 +4,9 @@
 [submodule "protobuf"]
 	path = protobuf
 	url = https://github.com/protocolbuffers/protobuf
+[submodule "corrade"]
+	path = corrade
+	url = https://github.com/mosra/corrade.git
+[submodule "magnum"]
+	path = magnum
+	url = https://github.com/mosra/magnum.git
