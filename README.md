@@ -21,6 +21,7 @@
 #### 手順
 
 1. このリポジトリをクローンします。
-2. `mkdir build`
-3. `cmake -G "Visual Studio 16 2019" ..`
-4. `cmake --build . --config Release`
+2. `git submodule update --init --recursive`
+3. `mkdir build`
+4. `cmake -G "Visual Studio 16 2019" ..`
+5. `cmake --build . --config Release`
