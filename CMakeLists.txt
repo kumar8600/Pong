@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 3.4)
 project(Pong)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/" ${CMAKE_MODULE_PATH})
+if(MSVC)
+  if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/local/x64 ${CMAKE_PREFIX_PATH})
+  elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/local/x86 ${CMAKE_PREFIX_PATH})
+  endif()
+endif(MSVC)
 
 # Add Corrade as a subproject
 add_subdirectory(corrade EXCLUDE_FROM_ALL)
@@ -12,14 +19,8 @@ if (MSVC)
 endif (MSVC)
 set(WITH_SDL2APPLICATION ON CACHE BOOL "" FORCE)
 add_subdirectory(magnum EXCLUDE_FROM_ALL)
-
-# protobuf
-if (MSVC)
-  set(protobuf_BUILD_TESTS OFF)
-  set(protobuf_BUILD_SHARED_LIBS ON)
-  add_subdirectory(protobuf/cmake EXCLUDE_FROM_ALL)
-endif (MSVC)
-
+  
+message(STATUS ${CMAKE_PREFIX_PATH})
 # GameNetworkingSockets
 add_subdirectory(GameNetworkingSockets EXCLUDE_FROM_ALL)
 
